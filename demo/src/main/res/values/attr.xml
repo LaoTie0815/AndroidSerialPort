@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CameraView">
+        <attr name="scale">
+            <enum name="auto" value="0"/>
+            <enum name="scale_4_3" value="1"/>
+            <enum name="scale_16_9" value="2"/>
+        </attr>
+        <attr name="resolution" format="integer"/>
+        <attr name="cameraFacing" format="integer"/>
+        <attr name="rotation" format="integer"/>
+        <attr name="autoMeasure" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+</resources>

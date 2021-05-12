@@ -1,0 +1,69 @@
+.DS_Store
+
+
+# Gradle files
+build/
+.gradle/
+*/build/
+captures/
+#gradle
+#gradlew
+#gradlew.bat
+
+# files for the dex VM
+.cxx/
+# Files for the Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# generated files
+bin/
+obj
+obj/local
+gen/
+bin/dexedLibs
+bin/res
+bin/*.xml
+bin/classes
+bin/res
+bin/jarlist.cache
+*.cache
+
+
+# IDEA
+*.iml
+.idea/
+.vscode/
+
+# Built application files
+*.apk
+*.ap_
+
+
+# Files for the Dalvik VM
+*.dex
+
+
+# Java class files
+*.class
+
+
+# Generated files
+antLauncher/bin
+antLauncher/gen
+
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+
+# Log Files
+*.log
+
+#cpp
+.cxx/
