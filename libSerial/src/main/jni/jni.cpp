@@ -50,16 +50,6 @@ std::string jni_mtc_handle_at(const char *cmd, unsigned int cmdLength, int mseco
     return resp;
 }
 
-inline std::string mtc_shell_execute(char (*cmd_list)[g_cmd_buf], const short cmd_num) {
-    std::string response;
-    for (int i = 0; i < cmd_num; i++) {
-        char *tmp = cmd_list[i];
-        char *resp = MTC::getInstance().shell(tmp, strlen(tmp));
-        response.append(resp);
-        free(resp);
-    }
-    return response;
-}
 
 static jboolean
 mRegisterCallback(JNIEnv *env, jobject instance, jobject callback) {

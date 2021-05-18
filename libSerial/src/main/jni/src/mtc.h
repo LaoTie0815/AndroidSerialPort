@@ -128,7 +128,6 @@ private:
     void initReveiver();
     void destroySerial() noexcept;
     void processSerialThread();
-    void processJniCallbackThread();
 
     int processRecvTLV(Serial *serial,unsigned char *dst_data,size_t dst_length);
     unsigned char *readData(size_t &length,int msecond, const unsigned short &tag);
@@ -174,20 +173,14 @@ public:
     int atHandle(const char *atCmd, size_t atLength,unsigned  char **resp, size_t &respLen, int msecond); //resp must release[free] by manual.
     int atHandle(const char *atCmd, size_t atLength,unsigned  char **resp, int msecond); //resp must release[free] by manual.
     int ping(char* data,size_t length);
-    int dataAck(unsigned short tag);
+
+    int package_fill_crc32(unsigned char *data);
+    unsigned int package_calc_crc32(unsigned char *data, unsigned int length);
+    unsigned int package_get_length(unsigned char* data) noexcept ;
+    int package_fill_length(unsigned char *data, unsigned int length);
+
     char *shell(char* cmd,size_t length);
 
-    /*--|| ai ||--*/
-    int aiControlAutoUploadAiInfo(unsigned char command,int rgbFace, int rgbBg, int ir);
-    int mUploadFrameAiInfo(unsigned char command);
-
-
-    /*--||  callback response }}--*/
-    void nativeTracking(unsigned char *data, JNIEnv *env);
-    void nativeVerify(unsigned char *data, JNIEnv *env);
-    void nativePictureDataNew(unsigned char *data, JNIEnv *env);
-    void nativeFeature(unsigned char *data, JNIEnv *env);
-    void nativeQrCode(unsigned char *data, JNIEnv *env);
     void nativeDisconnect();
 
 };
