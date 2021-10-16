@@ -28,10 +28,10 @@ android {
             path "src/main/jni/CMakeLists.txt"
         }
     }
-//    compileOptions {
-//        sourceCompatibility = javaSourceCompatibility
-//        targetCompatibility = javaTargetCompatibility
-//    }
+    compileOptions {
+        sourceCompatibility = javaSourceCompatibility
+        targetCompatibility = javaTargetCompatibility
+    }
 }
 
 dependencies {
