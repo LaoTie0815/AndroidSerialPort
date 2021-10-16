@@ -6,8 +6,6 @@
 #include <cstring>
 #include <cerrno>
 #include <sys/select.h>
-//#include <sys/stat.h>
-//#include <sys/types.h>
 #include <unistd.h>
 #include <malloc.h>
 #include <libgen.h>
@@ -98,7 +96,6 @@ Return     : success: 0
              failure: uart_open() failure return value ,or uart_set_attr() failure return value.
 ******************************************************************************/
 int Serial::init(const char *device, const int &speed, const int &stop_bits, const int &data_bits, const int &parity) {
-
     this->m_uart.speed = speed;
     this->m_uart.stopBits = stop_bits;
     this->m_uart.dataBits = data_bits;
@@ -301,10 +298,11 @@ int Serial::uartOpen(const char *device) {
     LOGD("device:%s, fd:%d", device, fd);
 //    fd = open(device, O_RDWR | O_NOCTTY | O_NDELAY);
     if (-1 == fd) {
-        perror("Can't OpenSerial Port");
+        perror("Can't Open Serial Port");
         return ERR_CANNOT_OPEN;
     }
-    if (fcntl(fd, F_SETFL, 0) < 0) {//设为阻塞状态
+
+    if (fcntl(fd, F_SETFL, 0) < 0) { /*恢复串口为阻塞状态*/
         perror("fcntl setfl failed!\n");
         return ERR_CANNOT_FCNTL;
     } else {
